@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+В итоге...
+{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom: 20px;">
+    Итоги предсказаний...
+</h2>
+<p>
+    В ходе предположений, мы выяснили, кто из экстрасенсов оказался прав, <br>
+    и подсчитали его процент верных догадок:
+</p>
+
+<table class="table table-bordered table-sm">
+
+    <thead class="table-light">
+        <tr>
+            <td> {{ procent_success.num1 }}% </td>
+            <td> {{ procent_success.num2 }}% </td>
+            <td> {{ procent_success.num3 }}% </td>
+            <td> % совпадений </td>
+        </tr>
+        <tr>
+            <th scope="col">Василий</th>
+            <th scope="col">Мария</th>
+            <th scope="col">Тимофей</th>
+            <th scope="col">Ваше число</th>
+        </tr>
+    </thead>
+
+    {% for stage in dict_res %}
+        <tbody>
+        {% if forloop.first %}
+            <td class="table-info">{{ stage.num1 }}</td>
+            <td class="table-info">{{ stage.num2 }}</td>
+            <td class="table-info">{{ stage.num3 }}</td>
+            <td class="table-info">{{ stage.answer }}</td>
+        {% else %}
+            <td>{{ stage.num1 }}</td>
+            <td>{{ stage.num2 }}</td>
+            <td>{{ stage.num3 }}</td>
+            <td>{{ stage.answer }}</td>
+        {% endif %}
+        </tbody>
+    {% endfor %}
+
+</table>
+
+<div class="col">
+    <a href="/initial">
+        <button>Повторить тест</button>
+    </a>
+</div>
+{% endblock %}

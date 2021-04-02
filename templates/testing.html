@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+Попытки
+{% endblock %}
+
+{% block content %}
+<h2 style="margin-bottom: 20px;">
+    Экстрасенсы предполагают, <br>
+    что Ваше число:
+</h2>
+
+<table class="table table-bordered table-sm">
+
+    <thead class="table-light">
+        <th scope="col">Василий</th>
+        <th scope="col">Мария</th>
+        <th scope="col">Тимофей</th>
+    </thead>
+
+    <tbody>
+        <td>{{ num1 }}</td>
+        <td>{{ num2 }}</td>
+        <td>{{ num3 }}</td>
+    </tbody>
+</table>
+
+<form method="POST" action="/testing">
+    {% csrf_token %}
+    <input type="number" min="10" max="99" name="answer" required style="width: 128px;height: 26px;margin-bottom: 15px;"
+        placeholder="Ваше число" /><br>
+
+    <button type="submit">Мой ответ</button>
+</form>
+{% endblock %}
