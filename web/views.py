@@ -3,6 +3,7 @@ from random import randint
 from django.views.generic import View
 
 
+# Класс страницы приветствия и инициализации сессии
 class IndexView(View):
 
     def get(self, request):
@@ -13,6 +14,7 @@ class IndexView(View):
         return render(request, 'index.html')
 
 
+# Класс страницы начала и повтора тестирования, а также генерации "предсказаний"
 class InitialView(View):
 
     def get(self, request):
@@ -24,6 +26,7 @@ class InitialView(View):
         return render(request, 'initial.html')
 
 
+# Класс-миксин для подсчета процента достоверности предсказаний
 class ProcentMixin:
 
     @classmethod
@@ -40,6 +43,7 @@ class ProcentMixin:
         return procent
 
 
+# Класс страницы тестирования с методом пост
 class TestingView(ProcentMixin, View):
 
     def get(self, request):
@@ -52,6 +56,7 @@ class TestingView(ProcentMixin, View):
         return redirect('/result')
 
 
+# Класс страницы результата
 class ResultView(View):
     
     def get(self, request):
